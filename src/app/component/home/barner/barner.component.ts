@@ -16,20 +16,7 @@ export class BarnerComponent {
 
 
   constructor(private el: ElementRef){}
-  ngOnInit(): void {
-    const clonedBlock = this.el.nativeElement.querySelector('.mil-cloned');
-    const cloneDestination = this.el.nativeElement.querySelector('.mil-cv-clone-here');
-
-    if (clonedBlock && cloneDestination) {
-        const clonedElement = clonedBlock.cloneNode(true);
-        cloneDestination.appendChild(clonedElement);
-
-        const bannerBg = clonedElement.querySelector('.mil-banner-bg') as HTMLElement;
-        if (bannerBg) {
-            bannerBg.classList.add('mil-fw-banner');
-        }
-    }
-  }
+ 
 
   ngAfterViewInit(): void {
     const textElements = this.el.nativeElement.querySelectorAll(".mil-typing");

@@ -29,7 +29,7 @@ export class NavbarComponent implements AfterViewInit {
       // Construct the route path based on your href structure
       const linkRoute = link.getAttribute('href')?.replace('http://localhost:4200', ''); 
 
-      if (this.router.url === linkRoute || (linkRoute === '/home' && this.router.url === '/')) {
+      if (this.router.url === linkRoute) {
         link.parentElement?.classList.add('mil-current');
       } else {
         link.parentElement?.classList.remove('mil-current');

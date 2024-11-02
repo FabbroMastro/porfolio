@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ServiceComponent } from "../../component/home/service/service.component";
 import { LenguageComponent } from "../../component/home/lenguage/lenguage.component";
 import { SkillComponent } from "../../component/home/skill/skill.component";
@@ -19,6 +19,24 @@ import { LoadingComponent } from "../../../share/loading/loading.component";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent  {
+export class HomeComponent  implements AfterViewInit{
+
+
+  constructor(private el: ElementRef){}
+  
+  ngAfterViewInit(): void {
+    const clonedBlock = this.el.nativeElement.querySelector('.mil-cloned');
+    const cloneDestination = this.el.nativeElement.querySelector('.mil-cv-clone-here');
+
+    if (clonedBlock && cloneDestination) {
+        const clonedElement = clonedBlock.cloneNode(true);
+        cloneDestination.appendChild(clonedElement);
+
+        const bannerBg = clonedElement.querySelector('.mil-banner-bg') as HTMLElement;
+        if (bannerBg) {
+            bannerBg.classList.add('mil-fw-banner');
+        }
+    }
+  }
 
 }
