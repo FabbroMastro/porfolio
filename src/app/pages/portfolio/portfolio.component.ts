@@ -9,7 +9,7 @@ import Isotope from 'isotope-layout';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [LoadingComponent, NavbarComponent, ImgArticleComponent, BottomPanelComponent, SkillComponent],
+  imports: [LoadingComponent, ImgArticleComponent, BottomPanelComponent, SkillComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css'
 })

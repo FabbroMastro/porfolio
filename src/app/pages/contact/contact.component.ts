@@ -15,10 +15,10 @@ import { BarnerComponent } from '../../component/home/barner/barner.component';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ServiceComponent, LenguageComponent, SkillComponent, ReviewComponent, EducationComponent, WorkComponent, PriceComponent, SocialComponent, BarnerComponent, NavbarComponent, FooterComponent, LoadingComponent],
+  imports: [ServiceComponent, LenguageComponent, SkillComponent, ReviewComponent, EducationComponent, WorkComponent, PriceComponent, SocialComponent, BarnerComponent, FooterComponent, LoadingComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
 export class ContactComponent  {
-  
+
 }

@@ -15,7 +15,7 @@ import { LoadingComponent } from "../../../share/loading/loading.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ServiceComponent, LenguageComponent, SkillComponent, ReviewComponent, EducationComponent, WorkComponent, PriceComponent, SocialComponent, BarnerComponent, NavbarComponent, FooterComponent, LoadingComponent],
+  imports: [ServiceComponent, LenguageComponent, SkillComponent, ReviewComponent, EducationComponent, WorkComponent, PriceComponent, SocialComponent, BarnerComponent, FooterComponent, LoadingComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
