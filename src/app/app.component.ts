@@ -5,6 +5,7 @@ import '../../public/js/main.js';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { NavbarComponent } from '../share/navbar/navbar.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',

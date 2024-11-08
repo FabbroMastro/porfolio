@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ElementRef} from "@angular/core";
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ElementRef } from "@angular/core";
 
 @Component({
   selector: 'app-barner',
@@ -8,46 +8,41 @@ import {ElementRef} from "@angular/core";
   templateUrl: './barner.component.html',
   styleUrl: './barner.component.css'
 })
-export class BarnerComponent {
+export class BarnerComponent implements OnInit {
 
-  typeSpeed = 70;
-  backSpeed = 20;
-  backDelay = 1500;
+  words: string[] = ["Milo","Hello"];
+  currentText: string = "";
+  wordIndex: number = 0;
+  isDeleting: boolean = false;
 
+  ngOnInit(): void {
 
-  constructor(private el: ElementRef){}
- 
-
-  ngAfterViewInit(): void {
-    const textElements = this.el.nativeElement.querySelectorAll(".mil-typing");
-    const strings = ["Frontend Developer", "Web Developer", "Backend Developer", "Sognatore 😊"];
-    
-    textElements.forEach((textElement: HTMLElement) => {
-        this.typeText(textElement, strings);
-    });
+    this.type();
   }
 
-  typeText(textElement: HTMLElement, strings: string[]) {
-      let currentStringIndex = 0; 
-      let currentCharIndex = 0; 
-      let isDeleting = false; 
+  type() {
+    const currentWord = this.words[this.wordIndex];
 
-      const type = () => {
-          const currentString = strings[currentStringIndex]; 
-          const displayedText = currentString.substring(0, isDeleting ? currentCharIndex-- : currentCharIndex++); 
-          textElement.textContent = displayedText; 
+    if (this.isDeleting) {
+      this.currentText = currentWord.substring(0, this.currentText.length - 1);
+    } else {
+      this.currentText = currentWord.substring(0, this.currentText.length + 1);
+    }
 
-          if (!isDeleting && currentCharIndex === currentString.length) { 
-              setTimeout(() => isDeleting = true, this.backDelay); 
-          } else if (isDeleting && currentCharIndex === 0) { 
-              isDeleting = false; 
-              currentStringIndex = (currentStringIndex + 1) % strings.length; 
-          } 
+    let typeSpeed = this.isDeleting ? 25 : 70;
 
-          const delay = isDeleting ? this.backSpeed : this.typeSpeed; 
-          setTimeout(type, delay); 
-      };
+    if (!this.isDeleting && this.currentText === currentWord) {
+      typeSpeed = 1000; // Aspetta 1 secondo prima di cancellare
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.currentText === "") {
+      this.isDeleting = false;
+      this.wordIndex++;
+      if (this.wordIndex === this.words.length) {
+        this.wordIndex = 0;
+      }
+    }
+  
+    setTimeout(() => this.type(), typeSpeed);
 
-      type(); 
   }
 }
